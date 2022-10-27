@@ -13,15 +13,17 @@ canvas = Canvas(height=700, width=800, bg=BACKGROUND_COLOR, highlightthickness=1
 card_front_image = PhotoImage(file="card_front.png")
 canvas.create_image(410, 300, image=card_front_image)
 canvas.grid(row=0, column=0, columnspan=2)
+canvas.create_text(380, 200, text="Title", font=("Arial", 40, "italic"))
+canvas.create_text(380, 320, text="Word", font=("Arial", 40, "italic"))
 
-# Labels:
-title_label = Label()
-title_label.config(text="Title", font=("Arial", 40, "italic"))
-title_label.place(x=340, y=150)
-
-word_label = Label()
-word_label.config(text="Word", font=("Arial", 40, "bold"))
-word_label.place(x=320, y=300)
+# # Labels:
+# title_label = Label()
+# title_label.config(text="Title", font=("Arial", 40, "italic"))
+# title_label.place(x=340, y=150)
+#
+# word_label = Label()
+# word_label.config(text="Word", font=("Arial", 40, "bold"))
+# word_label.place(x=320, y=300)
 
 
 # #Buttons:
