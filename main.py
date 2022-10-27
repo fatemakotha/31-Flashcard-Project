@@ -10,8 +10,8 @@ window.config(padx=50, pady=50, bg=BACKGROUND_COLOR)
 
 #Canvas
 canvas = Canvas(height=700, width=800, bg=BACKGROUND_COLOR, highlightthickness=1)
-logo_image = PhotoImage(file="card_front.png")
-canvas.create_image(410, 300, image=logo_image)
+card_front_image = PhotoImage(file="card_front.png")
+canvas.create_image(410, 300, image=card_front_image)
 canvas.grid(row=0, column=0, columnspan=2)
 
 # Labels:
