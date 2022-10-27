@@ -3,6 +3,19 @@ import pandas
 
 BACKGROUND_COLOR = "#B1DDC6"
 
+
+data_frame = pandas.read_csv("spanish_words.csv")
+# print(type(data_frame)) #prints dataframe
+# print(data_frame)
+to_learn = data_frame.to_dict(orient="records") #Changed the orient **
+print(to_learn)
+
+
+def next_card():
+    pass
+
+
+
 #Window:
 window = Tk()
 window.title("**Flashpoint**")
