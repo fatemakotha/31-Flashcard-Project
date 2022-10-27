@@ -14,25 +14,25 @@ logo_image = PhotoImage(file="card_front.png")
 canvas.create_image(400, 300, image=logo_image) #half of 200 is 100, so thats the center of the page
 canvas.grid(row=0, column=0, columnspan=2)
 
-#Labels:
-# title_label = Label()
-# title_label.config(text="Title")
-# title_label.grid(row=0, column=1)
-#
-# word_label = Label()
-# word_label.config(text="Word")
-# word_label.grid(row=1, column=1)
-#
+# Labels:
+title_label = Label()
+title_label.config(text="Title", font=("Arial", 40, "italic"))
+title_label.place(x=340, y=150)
+
+word_label = Label()
+word_label.config(text="Word", font=("Arial", 40, "bold"))
+word_label.place(x=330, y=300)
+
+
 # #Buttons:
-right_button = Button()
-right_button.config(text="Right")
+
+right_image = PhotoImage(file="right.png")
+right_button = Button(image=right_image)
 right_button.grid(row=1, column=0)
 
-wrong_button = Button()
-wrong_button.config(text="Wrong")
+wrong_image = PhotoImage(file="wrong.png")
+wrong_button = Button(image=wrong_image)
 wrong_button.grid(row=1, column=1)
-#
-#
 
 
 
