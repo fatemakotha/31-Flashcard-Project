@@ -1,5 +1,6 @@
 from tkinter import *
 import pandas
+import random
 
 BACKGROUND_COLOR = "#B1DDC6"
 
@@ -8,7 +9,8 @@ data_frame = pandas.read_csv("spanish_words.csv")
 # print(type(data_frame)) #prints dataframe
 # print(data_frame)
 to_learn = data_frame.to_dict(orient="records") #Changed the orient **
-print(to_learn)
+print(to_learn) #prints a list consisting od dicts **
+print(type(to_learn)) #prints: list
 
 
 def next_card():
