@@ -19,14 +19,19 @@ current_card = {}
 
 def next_card():
     global current_card
+    global flip_timer
+    window.after_cancel(flip_timer)
     current_card = random.choice(to_learn) #lets say it picks 8th entry in list which is: {'Spanish': 'que', 'English': 'that'}
     print(current_card["Spanish"]) #the current_card["Spanish"] = "que", and current_card["English"] = "that"
-    canvas.itemconfig(card_title, text="Spanish")
-    canvas.itemconfig(card_word, text=current_card["Spanish"])
+    canvas.itemconfig(card_title, text="Spanish", fill="black")
+    canvas.itemconfig(card_word, text=current_card["Spanish"], fill="black")
+    canvas.itemconfig(card_background, image=card_front_image)
+    flip_timer = window.after(3000, flip_card)
 def flip_card():
-    canvas.itemconfig(card_title, text="English")
-    canvas.itemconfig(card_word, text=current_card["English"])
+    canvas.itemconfig(card_title, text="English", fill="white") #changes fill color
+    canvas.itemconfig(card_word, text=current_card["English"], fill="white") #changes fill color
     canvas.itemconfig(card_background, image=card_back_image)
+
 
 
 
@@ -37,7 +42,7 @@ def flip_card():
 window = Tk()
 window.title("**Flashpoint**")
 window.config(padx=50, pady=50, bg=BACKGROUND_COLOR)
-window.after(3000, flip_card)
+flip_timer = window.after(3000, flip_card)
 
 
 #Canvas
