@@ -5,16 +5,20 @@ import random
 
 
 BACKGROUND_COLOR = "#B1DDC6"
-
-
-data_frame = pandas.read_csv("spanish_words.csv")
-# print(type(data_frame)) #prints dataframe
-# print(data_frame)
-to_learn = data_frame.to_dict(orient="records") #Changed the orient **
-print(to_learn) #prints a list consisting od dicts **
-print(type(to_learn)) #prints: list
-
 current_card = {}
+to_learn = {}
+
+try:
+    data = pandas.read_csv("words_to_learn")
+except FileNotFoundError:
+    original_data = pandas.read_csv("spanish_words.csv")
+    to_learn = original_data.to_dict(orient="records")
+else:
+    to_learn = data.to_dict(orient="records")
+
+
+
+
 
 
 def next_card():
@@ -33,8 +37,15 @@ def flip_card():
     canvas.itemconfig(card_background, image=card_back_image)
 
 
+def is_known():
+    to_learn.remove(current_card)
+    print(len(to_learn))
 
+    #creates a list of storage of words i still need to learn
+    data = pandas.DataFrame(to_learn)
+    data.to_csv("words_to_learn", index=False) #pandas does not add the index numbers to our newly created list **
 
+    next_card()
 
 
 
@@ -58,7 +69,7 @@ card_word = canvas.create_text(380, 320, text="Word", font=("Arial", 40, "bold")
 
 #Buttons:
 check_image = PhotoImage(file="right.png")
-unknown_button = Button(image=check_image, highlightthickness=0, command=next_card)
+unknown_button = Button(image=check_image, highlightthickness=0, command=is_known)
 unknown_button.grid(row=1, column=0)
 
 cross_image = PhotoImage(file="wrong.png")
